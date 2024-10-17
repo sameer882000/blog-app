@@ -10,7 +10,7 @@ const cookieParser = require("cookie-parser");
 const { checkAuthentication } = require("./middleware/authentication");
 const Blog = require("./models/blog");
 
-mongoose.connect(process.env.MONGO_URI).then(() => {
+mongoose.connect(process.env.MONGODB_URI).then(() => {
   console.log("Connected to MongoDB");
 });
 
