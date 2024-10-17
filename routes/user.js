@@ -35,7 +35,6 @@ router.get("/signup", (req, res) => {
 
 router.post("/signup",upload.single("profileImage"),  async (req, res) => {
   const { fullName, email, password } = req.body;
-  console.log(req);
   await User.create({ fullName, email, password, profileImageURL: `/images/${req.file.filename}` });
   return res.redirect("/user/signin");
 });

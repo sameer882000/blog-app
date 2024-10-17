@@ -11,7 +11,6 @@ const { checkAuthentication } = require("./middleware/authentication");
 const Blog = require("./models/blog");
 const dbUri =
   "mongodb+srv://sameer:12345677@cluster0.l3qvc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-console.log(dbUri);
 
 mongoose.connect(dbUri).then(() => {
   console.log("Connected to MongoDB");
@@ -32,7 +31,6 @@ app.use("/blog", blogRouter);
 
 app.get("/", async (req, res) => {
   const blogs = await Blog.find({});
-  console.log(blogs);
   res.render("home", { user: req.user, blogs });
 });
 

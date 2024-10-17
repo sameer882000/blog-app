@@ -48,7 +48,6 @@ router.post("/comment/:id", async (req, res) => {
   const { content } = req.body;
   const createdBy = req.user._id;
   const blogId = req.params.id;
-  console.log(req.params);
   await Comment.create({
     content,
     createdBy,
