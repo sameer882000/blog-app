@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const ejs = require("ejs");
 const path = require("path");
@@ -9,7 +10,7 @@ const cookieParser = require("cookie-parser");
 const { checkAuthentication } = require("./middleware/authentication");
 const Blog = require("./models/blog");
 
-mongoose.connect("mongodb://localhost:27017/blogy").then(() => {
+mongoose.connect(process.env.MONGO_URI).then(() => {
   console.log("Connected to MongoDB");
 });
 
