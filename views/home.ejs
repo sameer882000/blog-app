@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Home Page</title>
+    <%- include('./partials/head') %>
+    <style>
+      /* General container padding */
+      .home-container {
+        padding-top: 30px;
+      }
+
+      /* Card styling */
+      .card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease-in-out;
+        margin-bottom: 30px;
+        border: none;
+        border-radius: 10px;
+      }
+
+      .card:hover {
+        transform: scale(1.05);
+      }
+
+      /* Card image styling */
+      .card-img-top {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        max-height: 200px;
+        object-fit: cover;
+      }
+
+      /* Card title */
+      .card-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: #333;
+        text-transform: capitalize;
+        margin-bottom: 10px;
+      }
+
+      /* Card text */
+      .card-text {
+        font-size: 1rem;
+        color: #555;
+        max-height: 60px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      /* "Read More" button styling */
+      .btn-primary {
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        font-weight: 600;
+      }
+
+      /* Adjust column width */
+      .row-cols-4 .col {
+        margin-bottom: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('./partials/nav') %>
+    <div class="container home-container">
+      <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+        <% blogs.forEach(blog => { %>
+        <div class="col">
+          <div class="card h-100">
+            <img src="<%= blog.coverImageURL %>" class="card-img-top" alt="Blog cover image">
+            <div class="card-body">
+              <h5 class="card-title"><%= blog.title %></h5>
+              <p class="card-text"><%= blog.content %></p>
+              <a href="/blog/<%= blog._id %>" class="btn btn-primary">Read More</a>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+    <%- include('./partials/scripts') %>
+  </body>
+</html>

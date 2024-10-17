@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head') %>
+    <title>Blog Page</title>
+    <style>
+      /* Blog page custom styles */
+      .blog-container {
+        background-color: #f9f9f9;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Blog title styling */
+      .blog-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #333;
+        text-transform: capitalize;
+      }
+
+      /* Blog cover image */
+      .blog-cover {
+        max-width: 100%;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Blog content */
+      .blog-content {
+        font-size: 1.125rem;
+        line-height: 1.8;
+        color: #444;
+        text-align: justify;
+      }
+
+      /* Author information */
+      .author-info {
+        border-top: 1px solid #ddd;
+        padding-top: 10px;
+        margin-top: 20px;
+      }
+
+      .author-image {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+
+      .author-name {
+        font-size: 1rem;
+        font-weight: 500;
+        color: #555;
+      }
+
+      /* Comments section */
+      .comments-section h4 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        color: #444;
+      }
+
+      /* Comment form styling */
+      .comment-form input {
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      /* Comment block */
+      .comment-block {
+        border-bottom: 1px solid #eee;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+      }
+
+      .comment-image {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+
+      .comment-author {
+        font-size: 1.125rem;
+        color: #333;
+        margin-bottom: 5px;
+      }
+
+      .comment-content {
+        font-size: 1rem;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('./partials/nav') %>
+
+    <!-- Blog content section -->
+    <div class="container mt-5 blog-container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h1 class="blog-title mb-4"><%= blog.title %></h1>
+          <img src="<%= blog.coverImageURL %>" class="img-fluid blog-cover rounded mb-4" alt="Blog cover image">
+        </div>
+        <div class="col-md-10 mx-auto blog-content">
+          <p class="fs-5"><%= blog.content %></p>
+        </div>
+      </div>
+
+      <!-- Blog author section -->
+      <div class="row mt-4">
+        <div class="col-md-12 d-flex align-items-center author-info">
+          <img src="<%= blog.createdBy.profileImageURL %>" class="rounded-circle author-image me-3" alt="Author profile image">
+          <span class="author-name fs-6 text-muted"><%= blog.createdBy.fullName %></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comments section -->
+    <div class="container mt-5 comments-section">
+      <h4>Comments (<%= comments.length %>)</h4>
+
+      <% if (locals.user) { %>
+      <form action="/blog/comment/<%= blog._id %>" method="POST" class="mb-5 comment-form">
+        <div class="mb-3">
+          <input type="text" class="form-control" id="content" name="content" placeholder="Enter your comment">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      <% } %>
+
+      <!-- Displaying comments -->
+      <div class="mt-4">
+        <% comments.forEach(comment => { %>
+        <div class="d-flex align-items-start mb-4 comment-block">
+          <img src="<%= comment.createdBy.profileImageURL %>" class="rounded-circle comment-image me-3" alt="Commenter profile image">
+          <div>
+            <span class="fw-bold comment-author"><%= comment.createdBy.fullName %></span>
+            <p class="mb-0 comment-content"><%= comment.content %></p>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+
+    <%- include('./partials/scripts') %>
+  </body>
+</html>

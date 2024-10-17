@@ -1,0 +1,151 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+  <style>
+    /* Navbar container styling */
+    .navbar {
+      background-color: #343a40;
+      padding: 15px 30px;
+    }
+
+    /* Navbar brand */
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    .navbar-brand:hover {
+      color: #ffc107;
+    }
+
+    /* Navbar links */
+    .navbar-nav .nav-link {
+      color: #ffffff;
+      font-size: 1.1rem;
+      margin-right: 15px;
+      transition: color 0.3s;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #ffc107;
+    }
+
+    .nav-link.active {
+      color: #ffc107;
+    }
+
+    /* Dropdown menu */
+    .dropdown-menu {
+      background-color: #343a40;
+      border: none;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .dropdown-menu .dropdown-item {
+      color: #ffffff;
+      transition: background-color 0.3s;
+    }
+
+    .dropdown-menu .dropdown-item:hover {
+      background-color: #495057;
+    }
+
+    /* Toggler button (for small screens) */
+    .navbar-toggler {
+      border: none;
+    }
+
+    .navbar-toggler-icon {
+      color: #ffffff;
+    }
+
+    /* Navbar on small screens */
+    @media (max-width: 992px) {
+      .navbar-nav {
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .navbar-nav .nav-link {
+        margin: 10px 0;
+      }
+    }
+
+    /* User profile image styling */
+    .user-profile-img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
+  </style>
+
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">BlogKaro.com</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+
+        <% if (locals.user) { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/blog/add-new">Add Blog</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <img
+              src="<%= locals.user.profileImageURL %>"
+              alt="User Profile"
+              class="user-profile-img"
+              title="<%= locals.user.fullName %>"
+            />
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/user/logout">Logout</a></li>
+          </ul>
+        </li>
+        <% } else { %>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Account
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/user/signin">Sign In</a></li>
+            <li><a class="dropdown-item" href="/user/signup">Sign Up</a></li>
+          </ul>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<% if (locals.error) { %>
+<div class="container">
+  <div class="alert alert-danger" role="alert"><%= locals.error %></div>
+</div>
+<% } %>

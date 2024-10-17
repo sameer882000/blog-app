@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sign Up Page</title>
+    <%- include('./partials/head.ejs') %>
+    <style>
+      /* Center the sign-up form */
+      .container {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 30px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Form labels */
+      label {
+        font-weight: bold;
+      }
+
+      /* Input fields */
+      .form-control {
+        border-radius: 4px;
+        border: 1px solid #ced4da;
+        padding: 10px;
+        margin-top: 5px;
+      }
+
+      /* Email help text */
+      .form-text {
+        font-size: 0.9rem;
+        color: #6c757d;
+      }
+
+      /* Submit button */
+      .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        width: 100%;
+        padding: 10px;
+        border-radius: 4px;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        background-color: #0056b3;
+      }
+
+      /* Mobile responsiveness */
+      @media (max-width: 576px) {
+        .container {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('./partials/nav.ejs') %>
+    <div class="container">
+      <h2 class="text-center mb-4">Sign Up</h2>
+      <form action="/user/signup" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label for="fullName" class="form-label">Full Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="fullName"
+            name="fullName"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="profileImage" class="form-label">Profile Image</label>
+          <input
+            type="file"
+            class="form-control"
+            id="profileImage"
+            name="profileImage"
+            placeholder="Enter profile image"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            aria-describedby="emailHelp"
+            required
+          />
+          <div id="emailHelp" class="form-text">
+            We'll never share your email with anyone else.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+      </form>
+    </div>
+    <%- include('./partials/scripts.ejs') %>
+  </body>
+</html>
