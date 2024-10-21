@@ -1,4 +1,5 @@
-require("dotenv").config();
+const dotenv = require("dotenv");
+dotenv.config();
 const express = require("express");
 const ejs = require("ejs");
 const path = require("path");
@@ -9,13 +10,12 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const { checkAuthentication } = require("./middleware/authentication");
 const Blog = require("./models/blog");
-const dbUri =
-  "mongodb+srv://sameer:12345677@cluster0.l3qvc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-
-mongoose.connect(dbUri).then(() => {
+// const dbUri =
+//   "mongodb+srv://sameer:12345677@cluster0.l3qvc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+console.log(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI).then(() => {
   console.log("Connected to MongoDB");
 });
-
 
 const app = express();
 app.set("view engine", "ejs");
@@ -24,7 +24,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(checkAuthentication("token"));
 app.use(express.static(path.resolve("./public")));
-
 
 app.use("/user", userRouter);
 app.use("/blog", blogRouter);
