@@ -7,6 +7,7 @@ A simple and responsive blog application built with Node.js, Express.js, and EJS
 
 - [Features](#features)
 - [Technologies Used](#technologies-used)
+- [Deployment](#deployment)
 
 ## Features
 
@@ -22,4 +23,7 @@ A simple and responsive blog application built with Node.js, Express.js, and EJS
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB Atlas
 - **Deployment:** Railway
+
+## Deployment
+This application is deployed on Railway. You can access it here: [Link](https://blog-app-production-55f0.up.railway.app/)
 
