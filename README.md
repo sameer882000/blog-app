@@ -1,7 +1,7 @@
 
 # Blog Application
 
-A simple and responsive blog application built with Node.js, Express.js, and EJS for the frontend. This application allows users to create, read, update, and delete blog posts.
+A simple and responsive blog application built with Node.js, Express.js, and EJS for the frontend. This application allows users to create blog posts and interacts on each other's post via comments.
 
 ## Table of Contents
 
