@@ -10,8 +10,7 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const { checkAuthentication } = require("./middleware/authentication");
 const Blog = require("./models/blog");
-// const dbUri =
-//   "mongodb+srv://sameer:12345677@cluster0.l3qvc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+
 console.log(process.env.MONGODB_URI);
 mongoose.connect(process.env.MONGODB_URI).then(() => {
   console.log("Connected to MongoDB");
