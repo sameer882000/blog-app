@@ -11,7 +11,7 @@ A simple and responsive blog application built with Node.js, Express.js, and EJS
 
 ## Features
 
-- User authentication with login and registration.
+- User authentication with login and registration using JWT (JSON Web Token).
 - User-friendly interface to read and write blog posts.
 - Comment on each others post.
 - Responsive design for mobile and desktop views.
