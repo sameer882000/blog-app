@@ -11,8 +11,8 @@ A simple and responsive blog application built with Node.js, Express.js, and EJS
 
 ## Features
 
+- User authentication with login and registration.
 - User-friendly interface to read and write blog posts.
-- Create posts.
 - Comment on each others post.
 - Responsive design for mobile and desktop views.
 - Easy navigation through posts.
